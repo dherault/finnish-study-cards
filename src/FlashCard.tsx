@@ -28,6 +28,7 @@ export default function FlashCard({ card }: FlashCardProps) {
             WebkitBackfaceVisibility: 'hidden',
           }}
         >
+          <div className="absolute top-3 left-3 text-lg">🇫🇮</div>
           <div className="text-center">
             <h2 className="text-4xl font-bold">{card.finnishWord}</h2>
           </div>
@@ -42,6 +43,7 @@ export default function FlashCard({ card }: FlashCardProps) {
             transform: 'rotateY(180deg)',
           }}
         >
+          <div className="absolute top-3 left-3 text-lg">🇺🇸</div>
           <div className="text-center">
             <h2 className="text-4xl font-bold">{card.englishWord}</h2>
           </div>

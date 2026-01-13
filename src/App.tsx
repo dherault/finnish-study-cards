@@ -94,7 +94,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 py-8 px-4">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-2 text-gray-800">
+        <h1 className="mb-8 text-4xl font-bold text-center mb-2 text-gray-800">
           Finnish Study Cards
         </h1>
         {/* Demo mode notice removed */}
@@ -116,7 +116,7 @@ function App() {
             <div className="mt-8 flex justify-center items-center gap-4">
               <button
                 onClick={goToPreviousCard}
-                className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                className="w-32 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
                 disabled={cards.length <= 1}
               >
                 ← Previous
@@ -126,23 +126,23 @@ function App() {
               </span>
               <button
                 onClick={goToNextCard}
-                className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                className="w-32 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
                 disabled={cards.length <= 1}
               >
                 Next →
               </button>
             </div>
 
-            <div className="mt-6 flex justify-center gap-4">
+            <div className="mt-4 flex justify-center gap-4">
               <button
                 onClick={() => setIsAddModalOpen(true)}
-                className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold"
+                className="w-37.5 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold text-center"
               >
-                + Add Card
+                 Add Card
               </button>
               <button
                 onClick={() => setIsEditModalOpen(true)}
-                className="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-semibold"
+                className="w-37.5 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold text-center"
               >
                 Edit Card
               </button>
