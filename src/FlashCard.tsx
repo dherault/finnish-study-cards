@@ -22,26 +22,20 @@ export default function FlashCard({ card }: FlashCardProps) {
       >
         {/* Front side - Finnish */}
         <div
-          className="absolute w-full h-full bg-blue-500 text-white rounded-lg shadow-xl flex items-center justify-center p-8"
+          className="absolute w-full h-full bg-white text-gray-900 rounded-lg shadow-xl border border-gray-200 flex items-center justify-center p-8"
           style={{
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
           }}
         >
           <div className="text-center">
-            <h2 className="text-4xl font-bold mb-4">{card.finnishWord}</h2>
-            <p className="text-sm opacity-75">Click to flip</p>
-            {card.categoryName && (
-              <span className="inline-block mt-4 px-3 py-1 bg-blue-600 rounded-full text-xs">
-                {card.categoryName}
-              </span>
-            )}
+            <h2 className="text-4xl font-bold">{card.finnishWord}</h2>
           </div>
         </div>
 
         {/* Back side - English */}
         <div
-          className="absolute w-full h-full bg-green-500 text-white rounded-lg shadow-xl flex items-center justify-center p-8"
+          className="absolute w-full h-full bg-white text-gray-900 rounded-lg shadow-xl border border-gray-200 flex items-center justify-center p-8"
           style={{
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
@@ -49,13 +43,7 @@ export default function FlashCard({ card }: FlashCardProps) {
           }}
         >
           <div className="text-center">
-            <h2 className="text-4xl font-bold mb-4">{card.englishWord}</h2>
-            <p className="text-sm opacity-75">Click to flip back</p>
-            {card.categoryName && (
-              <span className="inline-block mt-4 px-3 py-1 bg-green-600 rounded-full text-xs">
-                {card.categoryName}
-              </span>
-            )}
+            <h2 className="text-4xl font-bold">{card.englishWord}</h2>
           </div>
         </div>
       </div>

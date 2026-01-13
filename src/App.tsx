@@ -4,10 +4,9 @@ import AddCardModal from './AddCardModal';
 import EditCardModal from './EditCardModal';
 import type { Card, Category } from './types';
 import { cardService, categoryService } from './services';
-import { demoCardService, demoCategoryService } from './demo-services';
+// Removed demo mode; using real services only
 
-// Use demo mode by default to showcase the app without Firebase connection issues
-const USE_DEMO_MODE = true;
+// Demo mode removed; app now uses real Firebase services
 
 function App() {
   const [cards, setCards] = useState<Card[]>([]);
@@ -18,8 +17,8 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   // Select service based on mode
-  const cardSvc = USE_DEMO_MODE ? demoCardService : cardService;
-  const categorySvc = USE_DEMO_MODE ? demoCategoryService : categoryService;
+  const cardSvc = cardService;
+  const categorySvc = categoryService;
 
   const loadData = useCallback(async () => {
     try {
@@ -98,11 +97,7 @@ function App() {
         <h1 className="text-4xl font-bold text-center mb-2 text-gray-800">
           Finnish Study Cards
         </h1>
-        {USE_DEMO_MODE && (
-          <p className="text-center text-sm text-gray-600 mb-6">
-            Demo Mode - Data stored in browser localStorage
-          </p>
-        )}
+        {/* Demo mode notice removed */}
 
         {cards.length === 0 ? (
           <div className="text-center py-16">
