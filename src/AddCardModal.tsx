@@ -58,8 +58,13 @@ export default function AddCardModal({ isOpen, onClose, onSubmit, categories }: 
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6">
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">Add New Card</h2>
+      <div 
+        className="bg-white rounded-lg shadow-xl w-full max-w-md p-6"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="add-card-heading"
+      >
+        <h2 id="add-card-heading" className="text-2xl font-bold mb-4 text-gray-800">Add New Card</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="finnishWord" className="block text-sm font-medium text-gray-700 mb-2">

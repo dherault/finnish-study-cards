@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import FlashCard from './FlashCard';
 import AddCardModal from './AddCardModal';
 import EditCardModal from './EditCardModal';
@@ -21,30 +21,7 @@ function App() {
   const cardSvc = USE_DEMO_MODE ? demoCardService : cardService;
   const categorySvc = USE_DEMO_MODE ? demoCategoryService : categoryService;
 
-  // Load cards and categories on mount
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        setLoading(true);
-        const [cardsData, categoriesData] = await Promise.all([
-          cardSvc.getAll(),
-          categorySvc.getAll()
-        ]);
-        setCards(cardsData);
-        setCategories(categoriesData);
-      } catch (error) {
-        console.error('Error loading data:', error);
-        alert('Failed to load data. Please check your Firebase configuration.');
-      } finally {
-        setLoading(false);
-      }
-    };
-    
-    loadData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     try {
       setLoading(true);
       const [cardsData, categoriesData] = await Promise.all([
@@ -59,7 +36,12 @@ function App() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [cardSvc, categorySvc]);
+
+  // Load cards and categories on mount
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
   const handleAddCard = async (finnishWord: string, englishWord: string, categoryName: string) => {
     const categoryId = await categorySvc.getOrCreate(categoryName);
@@ -85,10 +67,11 @@ function App() {
 
   const handleDeleteCard = async (id: string) => {
     await cardSvc.delete(id);
-    await loadData();
-    if (currentCardIndex >= cards.length - 1) {
-      setCurrentCardIndex(Math.max(0, cards.length - 2));
+    // Adjust current index before reloading data
+    if (currentCardIndex >= cards.length - 1 && cards.length > 1) {
+      setCurrentCardIndex(cards.length - 2);
     }
+    await loadData();
   };
 
   const goToNextCard = () => {

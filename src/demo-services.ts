@@ -63,7 +63,7 @@ export const demoCardService = {
     const cards = await this.getAll();
     const newCard: Card = {
       ...card,
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       createdAt: new Date()
     };
     cards.unshift(newCard);
@@ -97,7 +97,7 @@ export const demoCategoryService = {
   async add(name: string): Promise<string> {
     const categories = await this.getAll();
     const newCategory: Category = {
-      id: Date.now().toString(),
+      id: crypto.randomUUID(),
       name
     };
     categories.push(newCategory);

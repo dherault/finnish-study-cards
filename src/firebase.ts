@@ -2,6 +2,9 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
 // Firebase configuration
+// Note: These credentials are safe to expose in client-side code.
+// Firebase security is enforced through Firestore Security Rules, not by hiding config.
+// See: https://firebase.google.com/docs/projects/api-keys
 const firebaseConfig = {
   apiKey: "AIzaSyAvnMdzmz4ABB-0L21fiROuZfFc2WqYx40",
   authDomain: "finnish-study-cards.firebaseapp.com",
